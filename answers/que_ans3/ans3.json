@@ -1,0 +1,31 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "colors schema",
+	"description": "colors catalog",
+	"type": "object",
+	"properties": {
+		"colors": {
+			"type": "array", 
+			"items" : { 
+				"type" :"object",
+				"properties" : {
+					"color": {
+						"type": "string"
+					},
+					"catagory" :{
+						"type" :"string"
+					},
+					"type" : {
+						"type" : "string"
+					},
+					"code" : {
+						"type" : "object",
+
+						}
+					}
+					
+				}
+				"required": ["id", "name", "since", "connType"]
+			}
+		}
+	}

@@ -1,0 +1,71 @@
+2. [PYTHON] What is the significance of the resource class in flask-restful. Explain the job of dispatch_request method. [10]
+   Reference: https://github.com/flask-restful/flask-restful/blob/master/flask_restful/__init__.py
+
+   Resource Class in flask_restful
+
+1] Resource class is used to create resource objects by importing "from flask_restful import Resource"
+2] ex -
+from flask_restful import Resource
+
+class example(Resource):
+    def get(self):
+        pass
+    def post(self):
+        pass
+
+from flask import Flask
+from flask_restful import Api
+from myapi.resources.foo import example
+
+
+app = Flask(__name__)
+api = Api(app)
+
+api.add_resource(example, '/example', '/example/<str:id>')
+api.add_resource(example, '/example', '/example')
+
+
+3] Dispatch request method 
+"""
+def dispatch_request(self, *args, **kwargs):
+
+        # Taken from flask
+        #noinspection PyUnresolvedReferences
+        meth = getattr(self, request.method.lower(), None)
+        if meth is None and request.method == 'HEAD':
+            meth = getattr(self, 'get', None)
+        assert meth is not None, 'Unimplemented method %r' % request.method
+
+        if isinstance(self.method_decorators, Mapping):
+            decorators = self.method_decorators.get(request.method.lower(), [])
+        else:
+            decorators = self.method_decorators
+
+        for decorator in decorators:
+            meth = decorator(meth)
+
+        resp = meth(*args, **kwargs)
+
+        if isinstance(resp, ResponseBase):  # There may be a better way to test
+            return resp
+
+        representations = self.representations or OrderedDict()
+
+        #noinspection PyUnresolvedReferences
+        mediatype = request.accept_mimetypes.best_match(representations, default=None)
+        if mediatype in representations:
+            data, code, headers = unpack(resp)
+            resp = representations[mediatype](data, code, headers)
+            resp.headers['Content-Type'] = mediatype
+            return resp
+
+        return resp
+"""
+above dispatch_request method is used to create pluggable class-based views.
+
+pluggable class-based views used where we want to provide this view
+in a generic fashion that we can be adapt to other models and templates as well we might
+want more flexibility.
+ex- when we want to create class from method we can use dispatch_request.
+
+

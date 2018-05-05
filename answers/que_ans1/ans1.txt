@@ -1,0 +1,72 @@
+1. What are restful services. How do they compare with regular services. [10] 
+
+Ans => 
+1)REST stands for REpresentational State Transfer. 
+2)REST architecture, a REST Server provides access to resources and the REST client accesses and
+ presents the resources. Here each resource is identified by URIs/ Global IDs.
+ GET − Provides a read only access to a resource.
+
+ PUT − Used to create a new resource.
+
+ DELETE − Used to remove a resource.
+
+ POST − Used to update an existing resource or create a new resource.
+
+3)It revolves around resources where every component is a resource and a resource 
+is accessed by a common interface using HTTP standard methods.
+
+4)REST is a web standards based architecture and uses HTTP Protocol for data communication.
+
+5)REST uses various representations to represent a resource like Text, JSON and XML.
+ JSON is now the most popular format being used in Web Services.
+
+6) Comparison between RESTFUL Services and Regular Services
+
+1]RESTful web services are stateless.
+
+2] You can test this condition by restarting the server and checking if interactions survive.
+For most servers, RESTful web services provide a good caching infrastructure 
+over an HTTP GET method. 
+
+3]restful can improve the performance if the information the service returns
+is not altered frequently and is not dynamic.
+
+4]Service producers and consumers must understand the context and content 
+being passed along as there is no standard set of rules to describe the REST web services interface.
+
+5]REST is useful for restricted-profile devices, such as mobile,
+for which the overhead of additional parameters are less (e.g., headers).
+
+6]REST services are easy to integrate with existing websites and 
+are exposed with XML so the HTML pages can consume the same with ease.
+
+7] There is little need to refactor the existing site architecture.
+As such, developers are more productive because they don't need to rewrite everything 
+from scratch, instead, they just need to add on the existing functionality.
+
+8] A REST-based implementation is simple compared to regular services.
+
+Regular Services
+
+1] The Web Services Description Language (WSDL) describes a common set of rules to define the messages,
+bindings, operations and location of the service. 
+
+2]web service is akin to a contract to define the interface that the service offers.
+
+3] regular services requires less plumbing code than REST services design 
+e.g. transactions, security, coordination, addressing and trust. 
+
+4] Most real-world applications are not simple and support complex operations,
+ which require conversational state and contextual information to be maintained.
+ With the regular services approach, developers don't need to write plumbing code into the application layer.
+
+5] regular services web services, such as JAX-WS, are useful for asynchronous processing and invocation.
+
+6] regular services supports several protocols and technologies, including WSDL, XSDs and WS-Addressing.
+
+7] The types of clients that will be supported. 
+For example, REST services offer an effective way for interacting with lightweight clients,
+such as smartphones.
+
+8] How varying degrees of flexibility and standardization will be either rebuffed or
+accepted by the organization’s corporate culture.
